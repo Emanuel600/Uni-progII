@@ -10,3 +10,5 @@ Tarefas:
 1 => Ler um arquivo csv e formatar os resultados em uma tabela
 
 2 => Ler um arquivo csv e formatar os resultados em uma tabela, salvando os dados em uma struct e alocando somente a quantia nescessária de memória
+
+3 => Adicionar e implementar leitura utilizando dados abstratos
