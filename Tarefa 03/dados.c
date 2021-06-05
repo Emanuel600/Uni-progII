@@ -1,4 +1,6 @@
-/* Módulo responsável por
+/* Módulo responsável por definir funções para manipular
+ *criar e ler dados
+ *
  * stdio.h  => printf, fscanf, etc.
  * stdlib.h => perror, exit, etc.
  * string.h => strcpy
