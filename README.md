@@ -14,3 +14,5 @@ Tarefas:
 3 => Adicionar e implementar leitura utilizando dados abstratos
 
 4 => Utilizar lista encadeada para ler e imprimir os dados
+
+5 => Utilizar uma pilha para ler e imprimir os dados
