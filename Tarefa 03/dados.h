@@ -1,3 +1,8 @@
+/* Header responsavel por definir
+ *as funções utilizadas para manipular
+ *e ler dados
+*/
+
 #ifndef DADO_H_INCLUDED
 #define DADO_H_INCLUDED
 
