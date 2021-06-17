@@ -16,3 +16,5 @@ Tarefas:
 4 => Utilizar lista encadeada para ler e imprimir os dados
 
 5 => Utilizar uma pilha para ler e imprimir os dados
+
+6 => Utilizar uma fila para ler e imprimir os dados
