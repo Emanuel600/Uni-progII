@@ -1,5 +1,5 @@
-/** Parte do programa que contém as funções
- * de criação e manipulação de grafos.
+/** Parte do programa que contÃ©m as funÃ§Ãµes
+ * de criaÃ§Ã£o e manipulaÃ§Ã£o de grafos.
  *
  * Define a estrutura dos grafos e as
  *buscas de largura e profundidade.
@@ -13,35 +13,36 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-// Include do módulo
+// Include do mÃ³dulo
 #include "grafo.h"
+#include "pilha.h"
 #include "fila.h"
 
 struct vertices {
-	int id;         		/*!< Identificação numérica do vértice		*/
+	int id;         		/*!< IdentificaÃ§Ã£o numÃ©rica do vÃ©rtice		*/
 	
-    /* Mais informações, se necessário */
-	int distancia;			/*!< Distância até a fonte					*/
-	vertice_t* pai;			/*!< Vértice pai							*/
+    /* Mais informaÃ§Ãµes, se necessÃ¡rio */
+	int distancia;			/*!< DistÃ¢ncia atÃ© a fonte					*/
+	vertice_t* pai;			/*!< VÃ©rtice pai							*/
 
-	int visitado;			/*!<Booleano,1  se o vértice já foi visitado*/
+	int visitado;			/*!<Booleano,1  se o vÃ©rtice jÃ¡ foi visitado*/
 };
 
 struct arestas {
-	int adj;       			/*!< Valor booleando. Verdadeiro representa uma adjacência entre dois vértices  */
+	int adj;       			/*!< Valor booleando. Verdadeiro representa uma adjacÃªncia entre dois vÃ©rtices  */
 	
-    /* Mais informações, se necessário */
+    /* Mais informaÃ§Ãµes, se necessÃ¡rio */
 };
 
 struct grafos{
-	int n_vertices;        	/*!< Número de vértices do grafo  	*/
+	int n_vertices;        	/*!< NÃºmero de vÃ©rtices do grafo  	*/
 	vertice_t *vertices;   	/*!< Vetor de ponteiros: conjunto V */
-	aresta_t **matriz_adj;	/* Matriz de adjacência: conjunto E */
+	aresta_t **matriz_adj;	/* Matriz de adjacÃªncia: conjunto E */
 };
 
 /**
-  * @brief  Cria uma novo grafo estático
-  * @param	vertices: quantidade de vértices
+  * @brief  Cria uma novo grafo estÃ¡tico
+  * @param	vertices: quantidade de vÃ©rtices
   *
   * @retval grafo_t: ponteiro para um novo grafo
   */
@@ -57,9 +58,9 @@ grafo_t *cria_grafo(int vertices)
 		exit(EXIT_FAILURE);
 	}
 
-	/* Guarda número total de vértices */
+	/* Guarda nÃºmero total de vÃ©rtices */
 	g->n_vertices = vertices;
-    /* Aloca vértices */
+    /* Aloca vÃ©rtices */
 	g->vertices = malloc(vertices * sizeof(vertice_t));
 
 	if (g->vertices == NULL){
@@ -67,7 +68,7 @@ grafo_t *cria_grafo(int vertices)
 		exit(EXIT_FAILURE);
 	}
 
-	/* Zera vetor de vértices */
+	/* Zera vetor de vÃ©rtices */
 	memset(g->vertices, 0, vertices * sizeof(vertice_t));
     
     
@@ -76,7 +77,7 @@ grafo_t *cria_grafo(int vertices)
         g->vertices[i].id = i;
     }    
 
-    /* Aloca 1a dimensão da matriz de adjacência */
+    /* Aloca 1a dimensÃ£o da matriz de adjacÃªncia */
 	matriz_adj = malloc(vertices * sizeof(aresta_t *));
 
 	if (matriz_adj == NULL){
@@ -84,7 +85,7 @@ grafo_t *cria_grafo(int vertices)
 		exit(EXIT_FAILURE);
 	}
 
-	 /* Aloca 2a dimensão da matriz de adjacência */
+	 /* Aloca 2a dimensÃ£o da matriz de adjacÃªncia */
 	for ( i = 0; i < vertices; i++ )
 	{
 		matriz_adj[i] = calloc(vertices, sizeof(aresta_t));
@@ -101,7 +102,7 @@ grafo_t *cria_grafo(int vertices)
 }
 
 /**
-  * @brief  Libera a memória utilizada pelo grafo
+  * @brief  Libera a memÃ³ria utilizada pelo grafo
   * @param	Nenhum
   *
   * @retval Nenhum
@@ -123,11 +124,11 @@ void libera_grafo (grafo_t *g){
 }
 
 /**
-  * @brief  Cria adjacência entre vértices u e v
-  * @param	u: índice do vértice u
-  * @param  v: índice do vértice v
+  * @brief  Cria adjacÃªncia entre vÃ©rtices u e v
+  * @param	u: Ã­ndice do vÃ©rtice u
+  * @param  v: Ã­ndice do vÃ©rtice v
   *
-  * @retval int: verdadeiro se adjacência for criada
+  * @retval int: verdadeiro se adjacÃªncia for criada
   */
 int cria_adjacencia(grafo_t *g, int u, int v){
 
@@ -143,7 +144,7 @@ int cria_adjacencia(grafo_t *g, int u, int v){
 	return TRUE;
 }
 
-// Cria adjacência de u->v e de v->u
+// Cria adjacÃªncia de u->v e de v->u
 int cria_adjacencia_nd(grafo_t *g, int u, int v){
 	int ret = 0;
 	ret += cria_adjacencia(g,u,v);
@@ -152,11 +153,11 @@ int cria_adjacencia_nd(grafo_t *g, int u, int v){
 }
 
 /**
-  * @brief  Remove adjacência entre vértices u e v
-  * @param	u: índice do vértice u
-  * @param  v: índice do vértice v
+  * @brief  Remove adjacÃªncia entre vÃ©rtices u e v
+  * @param	u: Ã­ndice do vÃ©rtice u
+  * @param  v: Ã­ndice do vÃ©rtice v
   *
-  * @retval int: verdadeiro se adjacência for removida
+  * @retval int: verdadeiro se adjacÃªncia for removida
   */
 int rem_adjacencia(grafo_t *g, int u, int v){
 
@@ -173,9 +174,9 @@ int rem_adjacencia(grafo_t *g, int u, int v){
 }
 
 /**
-  * @brief  Retorna adjacência entre vértices u e v
-  * @param	u: índice do vértice u
-  * @param  v: índice do vértice v
+  * @brief  Retorna adjacÃªncia entre vÃ©rtices u e v
+  * @param	u: Ã­ndice do vÃ©rtice u
+  * @param  v: Ã­ndice do vÃ©rtice v
   *
   * @retval int: verdadeiro se u for adjacente a v
   */
@@ -190,15 +191,15 @@ int adjacente(grafo_t *g, int u, int v){
 void print_matrix(grafo_t* g){
 	#ifdef DEBUG
 		printf("============================\n");
-		printf("Imprimindo matriz adjacência\n");
+		printf("Imprimindo matriz adjacÃªncia\n");
 		printf("============================\n");
 	#endif
 	int i, j;
 	printf("\t");
-	// Imprime cabeçalho
+	// Imprime cabeÃ§alho
 	for (j=0; j< g->n_vertices; j++)
 		printf("%d\t", j+1);
-	// Imprime adjacência
+	// Imprime adjacÃªncia
 	for (i=0; i < g->n_vertices; i++){
 		printf("\n%d\t", i+1);
 		for (j=0; j < g->n_vertices; j++)
@@ -215,13 +216,13 @@ void print_csv(grafo_t* g){
 		printf("============================\n");
 	#endif
 	int i, j;
-	// Imprime cabeçalho
+	// Imprime cabeÃ§alho
 	for (j=0; j< g->n_vertices; j++)
 		if (j< (g->n_vertices)-1)
 			printf("%d,", j+1);
 		else
 			printf("%d\n", j+1);
-	// Imprime adjacência
+	// Imprime adjacÃªncia
 	for (i=0; i < g->n_vertices; i++){
 		for (j=0; j < g->n_vertices; j++){
 			if (j< (g->n_vertices)-1)
@@ -233,7 +234,7 @@ void print_csv(grafo_t* g){
 	printf("\n");
 }
 
-/* Funções de busca */
+/* FunÃ§Ãµes de busca */
 // Largura
 void busca_larga(grafo_t* g, int fonte){
 	#ifdef DEBUG
@@ -269,14 +270,14 @@ void busca_larga(grafo_t* g, int fonte){
 				    g->vertices[v].pai = vert;
 				    enqueue(&g->vertices[v], fila);
 
-				    #ifdef DEBUG //Imprime informações sobre o pai do nó e distância até a fonte
-				    	//Distância
+				    #ifdef DEBUG //Imprime informaÃ§Ãµes sobre o pai do nÃ³ e distÃ¢ncia atÃ© a fonte
+				    	//DistÃ¢ncia
 				    	printf("L%d->L%d | ", g->vertices[v].distancia,
 				    			 g->vertices[v].distancia+1);
 				    	//Pai
 				    	vertice_t* temp = g->vertices[id].pai;
 				    	if (temp != NULL) printf("Pai:%d\n", temp->id);
-				    	else printf("Fonte\n"); // Se o nó pai é nulo, estamos avaliando o nó fonte
+				    	else printf("Fonte\n"); // Se o nÃ³ pai Ã© nulo, estamos avaliando o nÃ³ fonte
 				    #endif
 			    }
 			#ifdef DEBUG
@@ -294,15 +295,15 @@ void busca_prof(grafo_t* g, int fonte){
 		printf("============================\n");
 	#endif
 	int i;
-	fila_t* fila = cria_fila();
+	fila_t* pilha = cria_pilha();
 
 	for (i=0; i< g->n_vertices; i++)
 		g->vertices[i].visitado = FALSE;
 
-	enqueue(&g->vertices[fonte], fila);
+	push(&g->vertices[fonte], pilha);
 
-	while(!fila_vazia(fila)){
-		vertice_t* vert = dequeue(fila);
+	while(!pilha_vazia(pilha)){
+		vertice_t* vert = pop(pilha);
 
 		int v;
 		int id = vert->id;
@@ -314,11 +315,11 @@ void busca_prof(grafo_t* g, int fonte){
 
 				if (adjacente(g, id, v)){
 					#ifdef DEBUG
-						// Confirma que houve conexão entre id e v
+						// Confirma que houve conexÃ£o entre id e v
 						printf("[%d]->[%d]:\t", id, v);
 					#endif
 						if( g->vertices[v].visitado == FALSE){
-							enqueue(&g->vertices[v], fila);
+							push(&g->vertices[v], pilha);
 
 							#ifdef DEBUG
 								// Confirma que v foi visitado
@@ -332,13 +333,14 @@ void busca_prof(grafo_t* g, int fonte){
 			}
 		}
 	}
+	libera_pilha(pilha);
 }
 
-/* Conjunto de funções para ler arquivo CSV */
-// Cria grafo não direcional
+/* Conjunto de funÃ§Ãµes para ler arquivo CSV */
+// Cria grafo nÃ£o direcional
 grafo_t* ler_csv_nd(char* nome){
-	short int u, v; 				/*!< Identificação numérica do vértice  */
-	short int num;					/*!< Número de vértices do grafo  */
+	short int u, v; 				/*!< IdentificaÃ§Ã£o numÃ©rica do vÃ©rtice  */
+	short int num;					/*!< NÃºmero de vÃ©rtices do grafo  */
 	char ign;						/*!< Char a ser ignorada  */
 	FILE* fp = fopen(nome, "r");
 
@@ -359,8 +361,8 @@ grafo_t* ler_csv_nd(char* nome){
 }
 // Cria grafo direcional
 grafo_t* ler_csv(char* nome){
-	short int u, v; 				/*!< Identificação numérica do vértice  */
-	short int num;					/*!< Número de vértices do grafo  */
+	short int u, v; 				/*!< IdentificaÃ§Ã£o numÃ©rica do vÃ©rtice  */
+	short int num;					/*!< NÃºmero de vÃ©rtices do grafo  */
 	char ign;						/*!< Char a ser ignorada  */
 	FILE* fp = fopen(nome, "r");
 
