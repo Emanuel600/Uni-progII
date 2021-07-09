@@ -52,6 +52,9 @@ void *dequeue(fila_t *fila){
 
 // Libera elementos da fila
 void libera_fila(fila_t* fila){
+    while (!fila_vazia(fila) ){
+	    void* dado = dequeue(fila);
+	    free dado;
     free(fila->dados);
     free(fila);
 }
