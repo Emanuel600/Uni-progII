@@ -5,7 +5,7 @@ Este repositório foi criado como backup caso ocorra algum problema com meu pc p
 
 Tarefas:
 
-0 => Definição de macros
+0 => Definição de macros para manipulação de bits
 
 1 => Ler um arquivo csv e formatar os resultados em uma tabela
 
