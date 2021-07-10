@@ -1,23 +1,23 @@
 /** Programa exemplo que exibe na tela dados formatados
-  * de um arquivo CSV conforme o padr„o:
+  * de um arquivo CSV conforme o padr√£o:
   *
-  *         CabeÁalho
+  *         Cabe√ßalho
   *         Pos        ,Nome    ,Ouro       ,Prata      ,Bronze     ,Total
   *         <short int>,<string>,<short int>,<short int>,<short int>,<short int>
   *         <short int>,<string>,<short int>,<short int>,<short int>,<short int>
   *
-  * O programa lÍ o arquivo <winterGames.csv> formatado conforme o cabeÁalho acima e os
-  *apresenta em forma de tabela para melhor organizaÁ„o na saÌda(ignorando a primeira linha).
+  * O programa l√™ o arquivo <winterGames.csv> formatado conforme o cabe√ßalho acima e os
+  *apresenta em forma de tabela para melhor organiza√ß√£o na sa√≠da(ignorando a primeira linha).
   *
-  * Para melhor uso de memÛria, foi utilizado short int, uma vez que nenhum
+  * Para melhor uso de mem√≥ria, foi utilizado short int, uma vez que nenhum
   *dos dados pode passar de (2^16)-1.
   *
-  * O programa n„o È capaz de armazenar os dados propriamente, somente os apresenta assim que
-  *os lÍ, desta forma n„o È nescess·rio criar um vetor.
-  * Isso faz com que caso for nescess·rio manipular os dados, ser· possÌvel fazer isso somente
-  *dentro do loop em que lÍ os dados, foi feito isso para salvar um pouco de memÛria j· que
-  *seria nescess·rio v·rios vetores para armazenar tudo que seria possÌvel com uma tabela deste tipo
-  *(um para cada paÌz)
+  * O programa n√£o √© capaz de armazenar os dados propriamente, somente os apresenta assim que
+  *os l√™, desta forma n√£o √© nescess√°rio criar um vetor.
+  * Isso faz com que caso for nescess√°rio manipular os dados, ser√° poss√≠vel fazer isso somente
+  *dentro do loop em que l√™ os dados, foi feito isso para salvar um pouco de mem√≥ria j√° que
+  *seria nescess√°rio v√°rios vetores para armazenar tudo que seria poss√≠vel com uma tabela deste tipo
+  *(um para cada pa√≠z)
   */
 
 /********************************
@@ -31,9 +31,9 @@
 int main(){
     char linha[128];
 
-    short int posicao;      /*!< PosiÁ„o: short int */
+    short int posicao;      /*!< Posi√ß√£o: short int */
     char nome[50];              /*!< Nomes */
-    short int ouro,         /*!< short int usa um pouco menos memÛria */
+    short int ouro,         /*!< short int usa um pouco menos mem√≥ria */
     prata, bronze, total;   /*!< Medalhas */
 
     FILE *fp = fopen("winterGames.csv","r");
@@ -47,14 +47,14 @@ int main(){
     fgets(linha,128, fp);
     printf("Ignorando: %s\n\n", linha);
 
-    /** CabeÁalho **/
+    /** Cabe√ßalho **/
     printf("=====================================================================\n");
     printf(" Pos\t\t  Nome  \t\t Ouro\tPrata\tBronze\tTotal\n");
     printf("=====================================================================\n");
 
     /* Imprima os dados:*/
 
-      /** LÍ todas as vari·veis e confirma que todas as 6 foram lidas propriamente **/
+      /** L√™ todas as vari√°veis e confirma que todas as 6 foram lidas propriamente **/
     while (fscanf(fp, "%hd,%50[^,],%hd,%hd,%hd,%hd\n",&posicao, &nome, &ouro,
                   &prata, &bronze, &total) == 6){
         printf("|%03hd| %-35s |%02hd|\t |%02hd|\t |%02hd|\t |%02hd|\t\n", posicao, nome, ouro,
