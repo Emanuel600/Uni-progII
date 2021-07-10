@@ -237,11 +237,9 @@ void print_csv(grafo_t* g){
 /* Funções de busca */
 // Largura
 void busca_larga(grafo_t* g, int fonte){
-	#ifdef DEBUG
-		printf("============================\n");
-		printf("Fazendo busca larga\n");
-		printf("============================\n");
-	#endif
+	printf("=================================================\n");
+	printf("Fazendo busca larga a partir do vertice [%02d]\n", fonte);
+	printf("=================================================\n");
 	int i;
 	fila_t* fila = cria_fila();
 
@@ -286,14 +284,13 @@ void busca_larga(grafo_t* g, int fonte){
 			}
 		}
 	}
+	libera_fila(fila);
 }
 // Profundidade
 void busca_prof(grafo_t* g, int fonte){
-	#ifdef DEBUG
-		printf("============================\n");
-		printf("Fazendo busca profunda\n");
-		printf("============================\n");
-	#endif
+	printf("=================================================\n");
+	printf("Fazendo busca profunda a partir do vertice [%02d]\n", fonte);
+	printf("=================================================\n");
 	int i;
 	fila_t* pilha = cria_pilha();
 
@@ -335,6 +332,8 @@ void busca_prof(grafo_t* g, int fonte){
 	}
 	libera_pilha(pilha);
 }
+
+
 
 /* Conjunto de funções para ler arquivo CSV */
 // Cria grafo não direcional
