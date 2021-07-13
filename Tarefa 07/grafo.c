@@ -333,7 +333,30 @@ void busca_prof(grafo_t* g, int fonte){
 	libera_pilha(pilha);
 }
 
-
+/* Funções de display */
+// Imprime resultado da busca larga
+void imprime_larga(grafo_t*g){
+    int i;
+    
+    for (i=0; i< g->n_vertices; i++){
+        if (g->vertices[i].distancia != INFINITO){
+                vertice_t* pai = g->vertices[i].pai;
+                printf("Vertice [%02d] encontra-se na camada L%d, ", i, g->vertices[i].distancia+1);
+            if (pai == NULL)
+                printf("vertice fonte\n");
+            else printf("vertice pai: %02d\n", pai->id);
+        }
+    }
+}
+// Imprime resultado da busca profunda
+void imprime_prof(grafo_t*g){
+    int i;
+    
+    for (i=0; i< g->n_vertices; i++)
+        if (g->vertices[i].visitado == TRUE)
+                printf("Vertice [%02d] foi visitado\n", i);
+        else printf("Vertice [%02d] nao foi visitado\n", i);
+}
 
 /* Conjunto de funções para ler arquivo CSV */
 // Cria grafo não direcional
