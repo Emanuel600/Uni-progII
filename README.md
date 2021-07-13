@@ -20,3 +20,5 @@ Tarefas:
 6 => Utilizar uma fila para ler e imprimir os dados
 
 7 => Implementar buscas larga e profunda em um grafo lido a partir de um CSV
+
+8 => Implementar grafo a partir de lista encadeada
