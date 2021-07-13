@@ -1,5 +1,5 @@
-/** Declara as funções utilizadas
- * para manipulação e criação de grafos
+/** Declara as funÃ§Ãµes utilizadas
+ * para manipulaÃ§Ã£o e criaÃ§Ã£o de grafos
  **/
 
 #ifndef GRAFO_H_
@@ -13,35 +13,41 @@ typedef struct vertices vertice_t;
 typedef struct arestas aresta_t;
 typedef struct grafos grafo_t;
 
-// Criar grafo com (n) vértices
+// Criar grafo com (n) vÃ©rtices
 grafo_t *cria_grafo(int vertices);
 // Libera os dados contidos no grafo
 void libera_grafo (grafo_t *g);
 
-/** Funções para criar adjacência **/
-// Define adjacência entre os nós como "verdadeira"(1) de u->v
+/** FunÃ§Ãµes para criar adjacÃªncia **/
+// Define adjacÃªncia entre os nÃ³s como "verdadeira"(1) de u->v
 int cria_adjacencia(grafo_t *g, int u, int v);
-// Define adjacência entre nós como "verdadeira"(1) tanto de u->v como de v->u
+// Define adjacÃªncia entre nÃ³s como "verdadeira"(1) tanto de u->v como de v->u
 int cria_adjacencia_nd(grafo_t *g, int u, int v);
 
-// Define adjacência entre nós como "falsa"(0)
+// Define adjacÃªncia entre nÃ³s como "falsa"(0)
 int rem_adjacencia(grafo_t *g, int u, int v);
-// Retorna se os nós 'u' e 'v' são adjacentes
+// Retorna se os nÃ³s 'u' e 'v' sÃ£o adjacentes
 int adjacente(grafo_t *g, int u, int v);
 
-// Imprime matriz de adjacência
+// Imprime matriz de adjacÃªncia
 void print_matrix(grafo_t* g);
-// Imprime matriz de adjacência em forma de csv
+// Imprime matriz de adjacÃªncia em forma de csv
 void print_csv(grafo_t* g);
 
-/* Funções de busca */
+/* FunÃ§Ãµes de busca */
 // Larga
 void busca_larga(grafo_t* g, int fonte);
 // Profunda
 void busca_prof(grafo_t* g ,int fonte);
 
-/* Conjunto de funções para ler arquivo CSV */
-// Cria grafo não direcional
+/* FunÃ§Ãµes de display dos resultados das buscas */
+// Larga
+void imprime_larga(grafo_t* g);
+// Profunda
+void imprime_profunda(grafo_t* g);
+
+/* Conjunto de funÃ§Ãµes para ler arquivo CSV */
+// Cria grafo nÃ£o direcional
 grafo_t* ler_csv_nd(char* nome);
 // Cria grafo direcional
 grafo_t* ler_csv(char* nome);
