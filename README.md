@@ -5,20 +5,24 @@ Este repositório foi criado como backup caso ocorra algum problema com meu pc p
 
 Tarefas:
 
-0 => Definição de macros para manipulação de bits
+00 => Definição de macros para manipulação de bits
 
-1 => Ler um arquivo csv e formatar os resultados em uma tabela
+01 => Ler um arquivo csv e formatar os resultados em uma tabela
 
-2 => Ler um arquivo csv e formatar os resultados em uma tabela, salvando os dados em uma struct e alocando somente a quantia nescessária de memória
+02 => Ler um arquivo csv e formatar os resultados em uma tabela, salvando os dados em uma struct e alocando somente a quantia nescessária de memória
 
-3 => Adicionar e implementar leitura utilizando dados abstratos
+03 => Adicionar e implementar leitura utilizando dados abstratos
 
-4 => Utilizar lista encadeada para ler e imprimir os dados
+04 => Utilizar lista encadeada para ler e imprimir os dados
 
-5 => Utilizar uma pilha para ler e imprimir os dados
+05 => Utilizar uma pilha para ler e imprimir os dados
 
-6 => Utilizar uma fila para ler e imprimir os dados
+06 => Utilizar uma fila para ler e imprimir os dados
 
-7 => Implementar buscas larga e profunda em um grafo lido a partir de um CSV
+07 => Implementar buscas larga e profunda em um grafo lido a partir de um CSV
 
-8 => Implementar grafo a partir de lista encadeada
+08 => Implementar grafo a partir de lista encadeada
+
+09 => Implementar árvore binária e suas funções de busca
+
+10 => Vários exercícios de ordenação
