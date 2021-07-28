@@ -23,6 +23,6 @@ Tarefas:
 
 08 => Implementar grafo a partir de lista encadeada
 
-09 => Implementar árvore binária e suas funções de busca
+09 => Implementar árvore binária e sua função de busca
 
 10 => Vários exercícios de ordenação
