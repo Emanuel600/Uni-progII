@@ -22,7 +22,7 @@ void definir_pivo(double* num1, double* num2, double* num3){
 }
 // Retorna índice de partição (ip)
 int partir(double* dados, int baixo, int alto){
-	definir_pivo(&dados[alto], &dados[alto>>1], &dados[baixo]);
+	definir_pivo(&dados[alto], &dados[(baixo + alto)>>1], &dados[baixo]);
 	double pivo = dados[alto];
 
 	int i = baixo - 1;
