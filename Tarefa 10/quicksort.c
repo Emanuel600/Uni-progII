@@ -14,17 +14,16 @@
 #include "vetores.h"
 
 // Define qual Número Utilizar Como Pivô
-double definir_pivo(double num1, double num2, double num3){
+void definir_pivo(double* num1, double* num2, double* num3){
 	if ((num1>num2) ^ (num1>num3))
-		return num1;
+		swap(num1, num3);
 	else if ((num2<num1) ^ (num2<num3))
-		return num2;
-	else
-		return num3;
+		swap(num2, num3);
 }
 // Retorna índice de partição (ip)
 int partir(double* dados, int baixo, int alto){
-	double pivo = definir_pivo(dados[alto], dados[alto>>1], dados[baixo]);
+	definir_pivo(&dados[alto], &dados[alto>>1], &dados[baixo]);
+	double pivo = dados[alto];
 
 	int i = baixo - 1;
 

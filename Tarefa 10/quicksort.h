@@ -12,7 +12,7 @@ int partir(double* dados, int baixo, int alto);
 // Chama Quicksort Recursivamente
 void quicksort(double* dados,int baixo, int alto);
 // Chama a Fucção Quicksort Conforme Necessário
-void call_quick(double* dados);
+void call_quick(double* dados, int tamanho);
 // Retorna Tempo Real Médio
 double medir_tempo_quick(int tamanho);
 #endif /* QUICKSORT_H_ */
