@@ -32,7 +32,7 @@ int main(){
     char linha[128];
 
     short int posicao;      /*!< Posição: short int */
-    char nome[50];              /*!< Nomes */
+    char nome[50];          /*!< Nomes */
     short int ouro,         /*!< short int usa um pouco menos memória */
     prata, bronze, total;   /*!< Medalhas */
 
